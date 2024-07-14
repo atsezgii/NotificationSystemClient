@@ -1,0 +1,14 @@
+<!-- notification-list.component.html -->
+<div class="container">
+  <div *ngFor="let notification of notifications" [class.unread]="!notification.readStatus">
+    <p>{{ notification.contents }}</p>
+    <p>{{ notification.postedDate| date: 'short' }}</p>
+    <button *ngIf="!notification.readStatus" (click)="markAsRead(notification)">Okundu olarak işaretle</button>
+  </div>
+  <div>
+    <input #receiverIdInput type="number" placeholder="Receiver ID">
+    <input #contentsInput type="text" placeholder="Notification contents">
+    <button (click)="sendNotification(receiverIdInput.value, contentsInput.value)">Send Notification</button>
+  </div>
+</div>
+
